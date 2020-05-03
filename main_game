@@ -33,6 +33,9 @@ def generate(word_list):
 
 def word_game(word):
     true_word = word
+    wrong_letters = []
+    keep_letters = {}
+    c_guess = ''
     while True:
         guess = input('Enter a guess: ')
         guess = guess.lower()
@@ -67,10 +70,38 @@ def word_game(word):
                 output[counter] = 'o'
                 word = word.replace(letter,'',1)
             counter += 1
-        print(f'Results: {output}')         #prints result of guess
+        print(f'Results: {output} \n')         #prints result of guess
+        check = comp_guess(output, guess, wrong_letters, c_guess, keep_letters)     #runs computer guess
+        c_guess = check[0]
+        if c_guess == true_word:
+            print(f'Sorry! The computer beat you! The correct word was {true_word}.')
+            break
+        word = true_word
+        output = []     #output list to track results
+        for x in word:
+            output.extend(' ')  #initiliaze list length to match word
+        counter = 0
+        for letter in check[0]:
+            if word[counter] == letter:     #check if letter in guess matches answer, appends 'x' to list if true
+                output[counter] = 'x'
+            counter += 1
+        counter = 0
+        for x in range(len(output)):        #slices answer to include only letters not guessed completely correctly
+            if output[x] == 'x':
+                word = word[:counter] + word[counter + 1:]
+            else:
+                counter += 1
+        counter = 0
+        for letter in check[0]:
+            if output[counter] == 'x':      #checks if letter is already correct before continuing
+                counter += 1
+                continue
+            if letter in word:              #if letter in string of answer, appends 'o' in correct index
+                output[counter] = 'o'
+                word = word.replace(letter,'',1)
+            counter += 1
+        print(f'Results: {output} \n')         #prints result of guess
     return output
-                
-
         
 a = generate(f'{choose_difficulty()}_letter.csv') #changes based on difficulty
 b = word_game(a)
