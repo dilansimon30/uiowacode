@@ -42,12 +42,11 @@ def get_info(dict):
                     five_letter.append(list1[i])
     return three_letter, four_letter, five_letter
 
-
 for i in range(3):
     word_list = get_info(page)[i]
     
     for c in word_list:
-        if '\'' in c or '-' in c or 'é' in c or 'ñ' in c: #remove words with special characters
+        if '\'' in c or '-' in c or 'é' in c or 'ñ' in c or ' ' in c: #remove words with special characters
             word_list.remove(c)
     
     for a in range(len(word_list)):
