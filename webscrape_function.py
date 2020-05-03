@@ -10,6 +10,8 @@ import time
 
 page = {'a':39, 'b':46, 'c':76, 'd':51, 'e':30, 'f':34, 'g':28, 'h':30, 'i':32, 'j':7, 'k':8, 'l':24, 'm':36, 
         'n':16, 'o':18, 'p':55, 'q':4, 'r':46, 's':87, 't':36, 'u':22, 'v':10, 'w':21, 'x':1, 'y':3 ,'z':2 }
+quick = {'a':2, 'b':2, 'c':2, 'd':2, 'e':2, 'f':2, 'g':2, 'h':2, 'i':2, 'j':2, 'k':2, 'l':2, 'm':2, 
+        'n':2, 'o':2, 'p':2, 'q':2, 'r':2, 's':2, 't':2, 'u':2, 'v':2, 'w':2, 'x':1, 'y':2 ,'z':2 } # can be inserted into main function for quick download
 
 lists = ['three', 'four', 'five']
 three_letter = []
@@ -43,7 +45,7 @@ def get_info(dict):
     return three_letter, four_letter, five_letter
 
 for i in range(3):
-    word_list = get_info(page)[i]
+    word_list = get_info(page)[i] #insert 'page' for full download and 'quick' for quick download
     
     for c in word_list:
         if '\'' in c or '-' in c or 'é' in c or 'ñ' in c or ' ' in c: #remove words with special characters
