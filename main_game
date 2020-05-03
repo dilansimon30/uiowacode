@@ -35,6 +35,10 @@ def word_game(word):
     while True:
         guess = input('Enter a guess: ')
         guess = guess.lower()
+        while len(guess) != len(true_word):      #check if guess length matches answer length
+            guess = input('Please enter a correct word legnth: ')
+            if len(guess) == len(true_word):
+                break
         word = true_word
         if guess == word:
             print(f'Congratulations! {guess} is the correct answer!')
