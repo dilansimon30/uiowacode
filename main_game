@@ -9,15 +9,16 @@ import random
 
 
 def choose_difficulty():
-    difficulty = input('Choose "easy", "normal", or "hard" difficulty: ')
-    if difficulty == 'easy':
-        return 'three'
-    elif difficulty == 'normal':
-        return 'four'
-    elif difficulty == 'hard':
-        return 'five'
-    else:
-        input("please choose a valid difficulty (easy, normal, hard): ")
+    while True:
+        difficulty = input('Choose "easy", "normal", or "hard" difficulty: ')
+        if difficulty == 'easy':
+            return 'three'
+        elif difficulty == 'normal':
+            return 'four'
+        elif difficulty == 'hard':
+            return 'five'
+        else:
+            difficulty = input('Choose "easy", "normal", or "hard" difficulty: ')
 
 
 def generate(word_list):
